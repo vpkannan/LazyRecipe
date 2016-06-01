@@ -1,4 +1,5 @@
 # LazyRecipe
+
 LazyRecipe
 
 You need this when you don't have much in your kitchen. Know what you can cook with what you have in the kitchen.
