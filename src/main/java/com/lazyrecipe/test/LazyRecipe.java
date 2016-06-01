@@ -27,25 +27,40 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import com.lazyrecipe.entity.Recipe;
 
 public class LazyRecipe {
 
-	public static void main(String[] args) {
-
-		ApplicationContext ctx = new GenericXmlApplicationContext("springBeans.xml");
-		MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+	static void writeRecipe(MongoOperations mongoOperation) {
 
 		List<String> omletIngredients = new ArrayList<String>();
 		omletIngredients.add("Flour");
 		omletIngredients.add("Sugar");
 		omletIngredients.add("Egg");
-		Recipe breakfastRecipe = new Recipe("Cake", omletIngredients);
+		Recipe breakfastRecipe = new Recipe("Pancake", omletIngredients);
 
 		mongoOperation.save(breakfastRecipe);
 
 		System.out.println(breakfastRecipe);
+	}
+
+	static void retrieveRecipe(MongoOperations mongoOperation) {
+
+		Query searchUserQuery = new Query(Criteria.where("dishName").is("Cake"));
+		Recipe savedRecipe = mongoOperation.findOne(searchUserQuery, Recipe.class);
+		System.out.println("Recipe: ");
+		System.out.println(savedRecipe);
+	}
+
+	public static void main(String[] args) {
+		ApplicationContext ctx = new GenericXmlApplicationContext("springBeans.xml");
+		MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+
+		// test function
+		retrieveRecipe(mongoOperation);
 
 	}
 }

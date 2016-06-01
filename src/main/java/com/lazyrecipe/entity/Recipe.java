@@ -57,6 +57,7 @@ public class Recipe {
 		String stringObject = "";
 		stringObject += "Dish Name: " + this.getDishName();
 		stringObject += System.getProperty("line.separator");
+		stringObject += "Ingredients: ";
 		stringObject += this.getIngredients().toString();
 		return stringObject;
 
