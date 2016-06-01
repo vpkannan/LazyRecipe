@@ -44,8 +44,6 @@
 			<version>2.2.2</version>
 		</dependency>
 
-		<!-- Added the following to fix XSD errors -->
-
 	</dependencies>
 
 	<build>
