@@ -49,7 +49,7 @@ public class LazyRecipe {
 
 	static void retrieveRecipe(MongoOperations mongoOperation) {
 
-		Query searchUserQuery = new Query(Criteria.where("dishName").is("Cake"));
+		Query searchUserQuery = new Query(Criteria.where("dishName").is("Pancake"));
 		Recipe savedRecipe = mongoOperation.findOne(searchUserQuery, Recipe.class);
 		System.out.println("Recipe: ");
 		System.out.println(savedRecipe);
