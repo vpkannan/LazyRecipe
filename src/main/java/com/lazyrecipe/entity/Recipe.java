@@ -39,6 +39,27 @@ public class Recipe {
 	public Recipe() {
 	}
 
+	/**
+	 * Create a recipe with all options specified
+	 * 
+	 * @param dishName
+	 *            Name of the dish
+	 * @param ingredients
+	 *            The ingredients required (mandatory)
+	 * @param baseIngredients
+	 *            The base ingredients required; example - water, cooking oil,
+	 *            etc.
+	 * @param cookingAppliances
+	 *            Appliances required to make this dish
+	 * @param recipeSteps
+	 *            The steps to make the dish
+	 * @param assumptions
+	 *            Basic assumptions made before trying this recipe
+	 * @param bestFor
+	 *            When is this dish best for
+	 * @param bestWith
+	 *            How this dish should be eaten
+	 */
 	public Recipe(String dishName, Set<String> ingredients, Set<String> baseIngredients, Set<String> cookingAppliances,
 			List<String> recipeSteps, String assumptions, String bestFor, String bestWith) {
 		this.dishName = dishName;
