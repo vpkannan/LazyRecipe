@@ -21,20 +21,34 @@
 package com.lazyrecipe.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "recipe")
 public class Recipe {
 	private String dishName;
-	private List<String> ingredients;
+	private Set<String> ingredients;
+	private Set<String> baseIngredients;
+	private Set<String> cookingAppliances;
+	private List<String> recipeSteps;
+	private String assumptions;
+	private String bestFor;
+	private String bestWith;
 
 	public Recipe() {
 	}
 
-	public Recipe(String dishName, List<String> ingredients) {
+	public Recipe(String dishName, Set<String> ingredients, Set<String> baseIngredients, Set<String> cookingAppliances,
+			List<String> recipeSteps, String assumptions, String bestFor, String bestWith) {
 		this.dishName = dishName;
 		this.ingredients = ingredients;
+		this.baseIngredients = baseIngredients;
+		this.cookingAppliances = cookingAppliances;
+		this.recipeSteps = recipeSteps;
+		this.assumptions = assumptions;
+		this.bestFor = bestFor;
+		this.bestWith = bestWith;
 	}
 
 	public String getDishName() {
@@ -45,20 +59,103 @@ public class Recipe {
 		this.dishName = dishName;
 	}
 
-	public List<String> getIngredients() {
+	public Set<String> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(List<String> ingredients) {
+	public void setIngredients(Set<String> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public Set<String> getBaseIngredients() {
+		return baseIngredients;
+	}
+
+	public void setBaseIngredients(Set<String> baseIngredients) {
+		this.baseIngredients = baseIngredients;
+	}
+
+	public Set<String> getCookingAppliances() {
+		return cookingAppliances;
+	}
+
+	public void setCookingAppliances(Set<String> cookingAppliances) {
+		this.cookingAppliances = cookingAppliances;
+	}
+
+	public List<String> getRecipeSteps() {
+		return recipeSteps;
+	}
+
+	public void setRecipeSteps(List<String> recipeSteps) {
+		this.recipeSteps = recipeSteps;
+	}
+
+	public String getAssumptions() {
+		return assumptions;
+	}
+
+	public void setAssumptions(String assumptions) {
+		this.assumptions = assumptions;
+	}
+
+	public String getBestFor() {
+		return bestFor;
+	}
+
+	public void setBestFor(String bestFor) {
+		this.bestFor = bestFor;
+	}
+
+	public String getBestWith() {
+		return bestWith;
+	}
+
+	public void setBestWith(String bestWith) {
+		this.bestWith = bestWith;
 	}
 
 	public String toString() {
 		String stringObject = "";
-		stringObject += "Dish Name: " + this.getDishName();
-		stringObject += System.getProperty("line.separator");
-		stringObject += "Ingredients: ";
-		stringObject += this.getIngredients().toString();
+		if (this.getDishName() != null) {
+
+			stringObject += "Dish Name: " + this.getDishName();
+		}
+		if (this.getIngredients() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Ingredients: ";
+			stringObject += this.getIngredients().toString();
+		}
+		if (this.getBaseIngredients() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Base Ingredients: ";
+			stringObject += this.getBaseIngredients().toString();
+		}
+		if (this.getCookingAppliances() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Appliances required: ";
+			stringObject += this.getCookingAppliances().toString();
+		}
+		if (this.getRecipeSteps() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Steps: ";
+			stringObject += this.getRecipeSteps().toString();
+		}
+		if (this.getAssumptions() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Assumptions: ";
+			stringObject += this.getAssumptions().toString();
+		}
+		if (this.getBestFor() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Best for: ";
+			stringObject += this.getBestFor().toString();
+		}
+		if (this.getBestWith() != null) {
+			stringObject += System.getProperty("line.separator");
+			stringObject += "Best with: ";
+			stringObject += this.getBestWith().toString();
+		}
 		return stringObject;
 
 	}

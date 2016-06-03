@@ -22,7 +22,9 @@
 package com.lazyrecipe.test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -36,11 +38,41 @@ public class LazyRecipe {
 
 	static void writeRecipe(MongoOperations mongoOperation) {
 
-		List<String> omletIngredients = new ArrayList<String>();
-		omletIngredients.add("Flour");
-		omletIngredients.add("Sugar");
-		omletIngredients.add("Egg");
-		Recipe breakfastRecipe = new Recipe("Pancake", omletIngredients);
+		// set dish name
+		String dishName = "Plain Dosa";
+
+		// set ingredients
+		Set<String> ingredients = new HashSet<String>();
+		ingredients.add("Batter");
+
+		// set base ingredients
+		Set<String> baseIngredients = new HashSet<String>();
+		baseIngredients.add("Oil");
+
+		// set cooking appliances
+		Set<String> cookingAppliances = new HashSet<String>();
+		cookingAppliances.add("Cooking range");
+		cookingAppliances.add("Flat pan");
+		cookingAppliances.add("Ladle");
+
+		// set recipe steps
+		List<String> recipeSteps = new ArrayList<String>();
+		recipeSteps.add("Pour batter on the flat pan");
+		recipeSteps.add("Wait for 2 minutes");
+		recipeSteps.add("Turn it around with ladle and wait for a minute");
+		recipeSteps.add("Take off the pan using ladle and serve.");
+
+		// set assumptions
+		String assumptions = "You have appropriate sidedish. Example - chutney";
+
+		// set best for
+		String bestFor = "Breakfast, Dinner";
+
+		// set best with
+		String bestWith = "Chutney and/or Sambhar";
+
+		Recipe breakfastRecipe = new Recipe(dishName, ingredients, baseIngredients, cookingAppliances, recipeSteps,
+				assumptions, bestFor, bestWith);
 
 		mongoOperation.save(breakfastRecipe);
 
@@ -49,7 +81,7 @@ public class LazyRecipe {
 
 	static void retrieveRecipe(MongoOperations mongoOperation) {
 
-		Query searchUserQuery = new Query(Criteria.where("dishName").is("Pancake"));
+		Query searchUserQuery = new Query(Criteria.where("dishName").is("Plain Dosa"));
 		Recipe savedRecipe = mongoOperation.findOne(searchUserQuery, Recipe.class);
 		System.out.println("Recipe: ");
 		System.out.println(savedRecipe);
@@ -59,8 +91,11 @@ public class LazyRecipe {
 		ApplicationContext ctx = new GenericXmlApplicationContext("springBeans.xml");
 		MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
 
-		// test function
-		retrieveRecipe(mongoOperation);
+		// test write function
+		//writeRecipe(mongoOperation);
+
+		// test retrieve function
+		 retrieveRecipe(mongoOperation);
 
 	}
 }
