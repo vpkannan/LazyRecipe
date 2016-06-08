@@ -21,7 +21,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lazyrecipe</groupId>
 	<artifactId>LazyRecipe</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>LazyRecipe</name>
 	<url>http://maven.apache.org</url>
@@ -53,8 +53,8 @@
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.2.0.RELEASE</version>
 		</dependency>
-		
-		
+
+
 		<!-- mongodb java driver -->
 		<dependency>
 			<groupId>org.mongodb</groupId>
@@ -67,6 +67,7 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
 		</dependency>
+
 		<!-- TestNG dependencies -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -81,16 +82,12 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
+		<finalName>LazyRecipe</finalName>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+
+			<!-- download source code in Eclipse, best practice -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -100,7 +97,25 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
+
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<!-- DO NOT include log4j.properties file in your Jar -->
+					<excludes>
+						<exclude>**/log4j.properties</exclude>
+					</excludes>
+					<archive>
+						<manifest>
+							<!-- Jar file entry point -->
+							<mainClass>com.lazyrecipe.test.LazyRecipe</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
-
 </project>
