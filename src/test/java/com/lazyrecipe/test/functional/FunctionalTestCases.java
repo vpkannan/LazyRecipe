@@ -73,6 +73,10 @@ public class FunctionalTestCases extends AbstractTestNGSpringContextTests {
 
 	}
 
+	/**
+	 * Testcase to create a new recipe in the test DB and verify if it is
+	 * created in the database
+	 */
 	@Test()
 	void testCreateAndReadForNewRecipe() {
 
@@ -86,6 +90,9 @@ public class FunctionalTestCases extends AbstractTestNGSpringContextTests {
 
 	}
 
+	/**
+	 * Testcase to retrieve existing recipe in the test DB
+	 */
 	@Test()
 	void testReadForExistingRecipe() {
 
