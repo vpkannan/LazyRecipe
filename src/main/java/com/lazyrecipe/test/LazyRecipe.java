@@ -88,14 +88,15 @@ public class LazyRecipe {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext ctx = new GenericXmlApplicationContext("springBeans.xml");
 		MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
 
 		// test write function
-		//writeRecipe(mongoOperation);
+		// writeRecipe(mongoOperation);
 
 		// test retrieve function
-		 retrieveRecipe(mongoOperation);
+		retrieveRecipe(mongoOperation);
 
 	}
 }
