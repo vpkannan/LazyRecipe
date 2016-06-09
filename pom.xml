@@ -21,7 +21,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lazyrecipe</groupId>
 	<artifactId>LazyRecipe</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>LazyRecipe</name>
 	<url>http://maven.apache.org</url>
@@ -80,6 +80,18 @@
 			<artifactId>spring-test</artifactId>
 			<version>3.2.17.RELEASE</version>
 		</dependency>
+
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.19.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.19.1</version>
+		</dependency>
 	</dependencies>
 
 
@@ -100,8 +112,8 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.3.2</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
 			</plugin>
 
 			<plugin>
