@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Simple HTML-XML Suite">
+	<test name="LazyRecipe-UnitTests" preserve-order="true" verbose="2">
+		<packages>
+			<package name="com.lazyrecipe.test.functional" />
+			<package name="com.lazyrecipe.test.nonfunctional" />
+		</packages>
+	</test>
+</suite>
