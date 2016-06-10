@@ -27,8 +27,8 @@ public class RecipeController {
 	}
 
 	@GET
-	@Path("/")
-	public Recipe getRecipeByName(@QueryParam("dishName") String dishName) {
+	@Path("/get")
+	public Recipe getRecipeByName(@QueryParam("dishname") String dishName) {
 
 		Recipe recipe = recipeManager.retrieveRecipeByDishName(dishName);
 
