@@ -3,6 +3,9 @@
  */
 package com.lazyrecipe.manager.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -34,8 +37,7 @@ public class RecipeManager implements RecipeManagement {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lazyrecipe.manager.RecipeManagerInterface#retrieveRecipeByDishName(
+	 * @see com.lazyrecipe.manager.RecipeManagement#retrieveRecipeByDishName(
 	 * java.lang.String)
 	 */
 	public Recipe retrieveRecipeByDishName(String dishName) {
@@ -44,6 +46,28 @@ public class RecipeManager implements RecipeManagement {
 		Recipe recipe = mongoOperation.findOne(searchUserQuery, Recipe.class);
 
 		return recipe;
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.lazyrecipe.manager.RecipeManagement#retrieveDishNamesByIngredients(
+	 * java.util.List<String>)
+	 */
+	public List<String> retrieveDishNamesByIngredients(List<String> ingredients) {
+
+		List<String> dishNames = new ArrayList<String>();
+
+		Query searchUserQuery = new Query(Criteria.where("ingredients").in(ingredients));
+		List<Recipe> recipes = mongoOperation.find(searchUserQuery, Recipe.class);
+
+		for (Recipe recipe : recipes) {
+			dishNames.add(recipe.getDishName());
+		}
+
+		return dishNames;
 
 	}
 
