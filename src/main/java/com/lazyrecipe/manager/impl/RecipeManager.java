@@ -64,7 +64,9 @@ public class RecipeManager implements RecipeManagement {
 		List<Recipe> recipes = mongoOperation.find(searchUserQuery, Recipe.class);
 
 		for (Recipe recipe : recipes) {
-			dishNames.add(recipe.getDishName());
+			if (ingredients.containsAll(recipe.getIngredients())) {
+				dishNames.add(recipe.getDishName());
+			}
 		}
 
 		return dishNames;

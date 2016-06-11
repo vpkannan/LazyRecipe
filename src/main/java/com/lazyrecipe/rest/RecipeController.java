@@ -33,7 +33,7 @@ public class RecipeController {
 	}
 
 	@GET
-	@Path("/get/recipe")
+	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Recipe getRecipeByName(@QueryParam("dishname") String dishName) {
 
