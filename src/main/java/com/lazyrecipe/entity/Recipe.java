@@ -35,6 +35,7 @@ public class Recipe {
 	private String assumptions;
 	private String bestFor;
 	private String bestWith;
+	private boolean testMode;
 
 	public Recipe() {
 	}
@@ -61,7 +62,7 @@ public class Recipe {
 	 *            How this dish should be eaten
 	 */
 	public Recipe(String dishName, Set<String> ingredients, Set<String> baseIngredients, Set<String> cookingAppliances,
-			List<String> recipeSteps, String assumptions, String bestFor, String bestWith) {
+			List<String> recipeSteps, String assumptions, String bestFor, String bestWith, boolean testMode) {
 		this.dishName = dishName;
 		this.ingredients = ingredients;
 		this.baseIngredients = baseIngredients;
@@ -70,6 +71,7 @@ public class Recipe {
 		this.assumptions = assumptions;
 		this.bestFor = bestFor;
 		this.bestWith = bestWith;
+		this.testMode = testMode;
 	}
 
 	public String getDishName() {
@@ -134,6 +136,14 @@ public class Recipe {
 
 	public void setBestWith(String bestWith) {
 		this.bestWith = bestWith;
+	}
+
+	public boolean isTestMode() {
+		return testMode;
+	}
+
+	public void setTestMode(boolean testMode) {
+		this.testMode = testMode;
 	}
 
 	public String toString() {

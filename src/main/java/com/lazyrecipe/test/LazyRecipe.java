@@ -72,7 +72,7 @@ public class LazyRecipe {
 		String bestWith = "Chutney and/or Sambhar";
 
 		Recipe breakfastRecipe = new Recipe(dishName, ingredients, baseIngredients, cookingAppliances, recipeSteps,
-				assumptions, bestFor, bestWith);
+				assumptions, bestFor, bestWith, true);
 
 		mongoOperation.save(breakfastRecipe);
 

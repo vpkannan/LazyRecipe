@@ -68,7 +68,7 @@ public class FunctionalTestCases extends AbstractTestNGSpringContextTests {
 		String bestWith = "Chutney and/or Sambhar";
 
 		this.recipe = new Recipe(dishName, ingredients, baseIngredients, cookingAppliances, recipeSteps, assumptions,
-				bestFor, bestWith);
+				bestFor, bestWith, true);
 
 	}
 
