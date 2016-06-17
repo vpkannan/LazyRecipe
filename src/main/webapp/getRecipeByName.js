@@ -2,11 +2,10 @@
  * 
  */
 
-$(document).ready(function() {
-	$('#getRecipeSubmit').click(function() {
-		getRecipeByName($('#dishName').val());
-	});
-});
+var button = document.getElementById("getRecipeSubmit"), value = button.form.dishName.value;
+button.onclick = function() {
+	getRecipeByName(value);
+}
 
 function getRecipeByName(dishName) {
 	$.ajax({
