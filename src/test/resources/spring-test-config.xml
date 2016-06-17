@@ -8,6 +8,6 @@
 		http://www.springframework.org/schema/context/spring-context.xsd
 	">
 
-	<context:component-scan base-package="com.lazyrecipe.test.functional" />
+	<context:component-scan base-package="com.lazyrecipe.main.functional" />
 
 </beans>

@@ -19,7 +19,7 @@
  * THE SOFTWARE.
  */
 
-package com.lazyrecipe.test;
+package com.lazyrecipe.main;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,7 +34,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.lazyrecipe.entity.Recipe;
 
-public class LazyRecipe {
+public class Launcher {
 
 	static void writeRecipe(MongoOperations mongoOperation) {
 
