@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-	$('#dishName').change(function() {
+	$('#getRecipeSubmit').click(function() {
 		getRecipeByName($('#dishName').val());
 	});
 });
